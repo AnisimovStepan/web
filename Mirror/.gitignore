@@ -7,6 +7,12 @@
 # Ide
 .idea/
 
+# Folder for test env
+testHW/
+
+# Build folder
+target/
+
 # BlueJ files
 *.ctxt
 
