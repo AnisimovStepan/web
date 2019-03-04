@@ -1,0 +1,373 @@
+/* Load Open Sans font from Google Fonts */
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800');
+/*! normalize.css v7.0.0 | MIT License | github.com/necolas/normalize.css */
+button,hr,input{overflow:visible}audio,canvas,progress,video{display:inline-block}progress,sub,sup{vertical-align:baseline}[type=checkbox],[type=radio],legend{box-sizing:border-box;padding:0}html{line-height:1.15;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}article,aside,details,figcaption,figure,footer,header,main,menu,nav,section{display:block}h1{font-size:2em;margin:.67em 0}figure{margin:1em 40px}hr{box-sizing:content-box;height:0}code,kbd,pre,samp{font-family:monospace,monospace;font-size:1em}a{background-color:transparent;-webkit-text-decoration-skip:objects}abbr[title]{border-bottom:none;text-decoration:underline;text-decoration:underline dotted}b,strong{font-weight:bolder}dfn{font-style:italic}mark{background-color:#ff0;color:#000}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative}sub{bottom:-.25em}sup{top:-.5em}audio:not([controls]){display:none;height:0}img{border-style:none}svg:not(:root){overflow:hidden}button,input,optgroup,select,textarea{font-family:'Open Sans',sans-serif;font-size:16px;line-height:1.15;margin:0}button,select{text-transform:none}[type=reset],[type=submit],button,html [type=button]{-webkit-appearance:button}[type=button]::-moz-focus-inner,[type=reset]::-moz-focus-inner,[type=submit]::-moz-focus-inner,button::-moz-focus-inner{border-style:none;padding:0}[type=button]:-moz-focusring,[type=reset]:-moz-focusring,[type=submit]:-moz-focusring,button:-moz-focusring{outline:ButtonText dotted 1px}fieldset{padding:.35em .75em .625em}legend{color:inherit;display:table;max-width:100%;white-space:normal}textarea{overflow:auto}[type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}[type=search]::-webkit-search-cancel-button,[type=search]::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}[hidden],template{display:none}
+
+:focus {
+    outline: 0;
+}
+
+body {
+    background-color: #000000;
+    font-family: 'Open Sans', sans-serif;
+    color: #fff;
+    letter-spacing: .5px;
+    font-size: 16px;
+    font-weight: 300;
+    user-select: none;
+    text-rendering: optimizeLegibility!important;
+    -webkit-font-smoothing: antialiased!important;
+
+    height: 100%;
+}
+
+.containerWrapper {
+    top: 0;
+    left: 0;
+
+    background-image: url('../images/massive-bg.jpg');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+
+    height: 100%;
+    position: fixed;
+    width: 100%;
+    z-index: -1;
+    overflow-y: hidden; /* has to be scroll, not auto */
+    /*-webkit-overflow-scrolling: touch;*/
+}
+/*.containerWrapper::before {*/
+/*content: "";*/
+
+/*position: fixed;*/
+
+/*height: 100%;*/
+/*width: 100%;*/
+/*z-index: -1;*/
+/*}*/
+
+a {
+    color: #FFF;
+    -webkit-tap-highlight-color: transparent;
+    text-decoration: none;
+}
+
+/*.error {*/
+/*width: 100%;*/
+/*margin: 40px 0;*/
+/*text-align: center;*/
+/*color: #d64d96;*/
+/*}*/
+
+/* Remove close icon from input on IE */
+input::-ms-clear {
+    display: none;
+}
+
+.container {
+    max-width: 1205px;
+    margin: 0 auto;
+}
+
+.flex-center {
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+}
+
+.flex-left {
+    display: flex;
+
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.flex-right {
+    display: flex;
+
+    justify-content: flex-end;
+    align-items: center;
+}
+
+/*.table-button {*/
+    /*padding: 16px;*/
+    /*color: #d5b577;*/
+/*}*/
+/*.table-button:hover {*/
+    /*color: #ffecc2;*/
+/*}*/
+
+.header-wrapper {
+    padding: 48px 40px;
+    position: relative;
+}
+
+.header {
+    text-align: center;
+    font-size: 40px;
+    color: #d5b577;
+    margin: 0;
+    letter-spacing: 1.8px;
+    font-weight: 700;
+}
+
+form {
+    margin: 0;
+}
+
+.header-form {
+    letter-spacing: 1.8px;
+    font-size: 25px;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+}
+.header-form__icon {
+    margin-right: 16px;
+    width: 46px;
+    height: 46px;
+    display: inline-block;
+}
+
+/* Mixin for items which need transparent background */
+.transparent-bg {
+    background-color: rgba(0,0,0,.8);
+}
+.transparent-bg-light {
+    background-color: rgba(0,0,0,.72);
+}
+
+/* Mixin for items which need change color on hover */
+.change-color {
+    -webkit-tap-highlight-color: transparent;
+}
+/*.change-color:hover, .change-color:active {*/
+/*!*.change-color:active, .change-color:hover{*!*/
+/*.change-color:active {*/
+/*color: #d5b577;*/
+/*}*/
+
+.change-color:hover {
+    color: #d5b577;
+}
+
+/* Mixin for content wich must draw delimeter border on top */
+.top-border {
+    border-top: 1px solid #484a4b;
+}
+/*.bottom-border {*/
+/*border-bottom: 1px solid #484a4b;*/
+/*}*/
+
+/* Mixin for bordered button */
+.change-color-button {
+    border: 2px solid #d5b577;
+    -webkit-tap-highlight-color: transparent;
+    background-color: transparent;
+
+    color: #fff;
+    text-decoration: none;
+    padding: 18px 30px;
+    font-weight: 600;
+    text-transform: uppercase;
+    text-align: center;
+    cursor: pointer;
+}
+
+.change-color-button:hover {
+    color: #d5b577;
+}
+.change-color-button:active {
+    color: #000;
+    background-color: #d5b577;
+}
+.change-color-button:active svg{
+    fill: #000;
+}
+.change-color-button:hover .loading-container__item{
+    border-top-color: #d5b577;
+    border-left-color: #d5b577;
+    border-bottom-color: #d5b577;
+}
+.change-color-button:active .loading-container__item{
+    border-top-color: #000;
+    border-left-color: #000;
+    border-bottom-color: #000;
+}
+
+/* Mixin for svg gold color and center*/
+.svg-col-mid {
+    fill: #d5b577;
+    vertical-align: middle;
+}
+
+/* Mixin for active menu item */
+.is-active {
+    background-color: #d5b577;
+    color: #000;
+}
+.is-active svg {
+    fill: #000;
+}
+/* Mixin for not active menu item */
+.not-active {
+    /*background-color: #d5b577;*/
+    color: #d0b473;
+}
+.not-active.white{
+    /*background-color: #d5b577;*/
+    color: #fff;
+}
+.not-active:hover {
+    background-color: #d5b577;
+    color: #000 !important;
+}
+.not-active:hover svg {
+    fill: #000;
+}
+.not-active:active {
+    background-color: #d5b577;
+    color: #000;
+}
+.not-active:active svg {
+    fill: #000;
+}
+
+.blur {
+    -webkit-filter: blur(8px);
+    filter: blur(8px);
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    /*padding: 4px;*/
+}
+
+th, td {
+    padding: 16px 8px;
+    text-align: left;
+}
+
+.container-block {
+    padding: 0 40px 40px 40px;
+}
+
+tr {
+    border-bottom: 1px solid #ddd;
+}
+tr:first-child {
+    background-color: transparent !important;
+    cursor: default !important;
+}
+tr:hover {
+    background-color:rgba(0, 0, 0, .32);
+    /*background-color:hsla(40,53%,65%,.12);*/
+    cursor: pointer;
+}
+
+/*Form*/
+.form__row {
+    margin-bottom: 40px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+.form__row:last-child {
+    margin-bottom: 0 !important;
+}
+
+    /*.form__wrapper {*/
+/*display: flex;*/
+/*width: 100%;*/
+/*flex-wrap: wrap;*/
+/*}*/
+
+.form__error {
+    margin-bottom: 11px;
+    font-size: 17px;
+    line-height: 17px;
+    color: #e1310e;
+    font-weight: 400;
+    width: 100%;
+}
+.form__error.success {
+    color: #0FBB24;
+}
+
+@media screen and (min-width: 400px) {
+    .form__error {
+        font-size: 21px;
+    }
+}
+
+@media screen and (min-width: 480px) {
+    .form__error {
+        padding-left: 20px;
+        margin-bottom: 15px;
+        font-size: 20px;
+        line-height: 20px;
+    }
+}
+
+.form-input {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+
+    font-family: 'Open Sans', sans-serif;
+
+    border: 1px solid #3d4347;
+    background-color: #1d2021;
+    color: #FFF;
+    font-weight: 500;
+    font-size: 17px;
+    width: 100%;
+    padding: 18px 12px 18px 18px;
+}
+
+.form-input__error {
+    border-color: #e1310e;
+}
+
+.form-input:hover {
+    border: 1px solid #d5b577;
+}
+.form-input:focus {
+    border: 1px solid #d5b577;
+    background-color: #131516;
+}
+
+.form-input::-webkit-input-placeholder {
+    color: #a9a9a9;
+    opacity: 1;
+}
+.form-input::-moz-placeholder {
+    color: #a9a9a9;
+    opacity: 1;
+}
+.form-input:-ms-input-placeholder {
+    color: #a9a9a9;
+    opacity: 1;
+}
+
+.form-input:-webkit-autofill{
+    background-color: #1d2021;
+    -webkit-box-shadow: 0 0 0 1000px #1d2021 inset!important;
+    color: #FFF;
+    -webkit-text-fill-color: #FFF
+}
+
+@media screen and (min-width: 400px) {
+    .form-input {
+        letter-spacing: 1px;
+    }
+}
+
+@media screen and (min-width: 640px) {
+    .form-input {
+        font-size: 21px;
+        padding: 25px 12px 25px 18px;
+    }
+}

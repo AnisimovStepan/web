@@ -30,6 +30,14 @@
             <!--<artifactId>freemarker</artifactId>-->
             <!--<version>2.3.23</version>-->
         <!--</dependency>-->
+
+        <!--Postgres jdbc driver-->
+        <!-- https://mvnrepository.com/artifact/org.postgresql/postgresql -->
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>42.2.5</version>
+        </dependency>
     </dependencies>
 
     <!--Config to build jar-->
