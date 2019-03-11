@@ -1,5 +1,6 @@
-package utils;
+package util;
 
+import model.RoleType;
 import model.User;
 
 import javax.servlet.http.HttpServletRequest;
@@ -7,10 +8,12 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class UserUtils {
+public class UserUtil {
     public static User getUserInstanceByParams(HttpServletRequest req) {
         User user = new User();
         user.setLogin(req.getParameter("login"));
+        user.setPassword(req.getParameter("password"));
+        user.setRole(RoleType.valueOf(req.getParameter("role")));
         user.setFirstName(req.getParameter("first-name"));
         user.setLastName(req.getParameter("last-name"));
         user.setMiddleName(req.getParameter("middle-name"));
@@ -21,6 +24,8 @@ public class UserUtils {
         User user = new User();
         user.setId(resultSet.getLong("id"));
         user.setLogin(resultSet.getString("login"));
+        user.setPassword(resultSet.getString("password"));
+        user.setRole(RoleType.valueOf(resultSet.getString("role")));
         user.setFirstName(resultSet.getString("first_name"));
         user.setLastName(resultSet.getString("last_name"));
         user.setMiddleName(resultSet.getString("middle_name"));
@@ -33,9 +38,9 @@ public class UserUtils {
         String emptyStr = "";
         if ((user.getLogin() == null) || (user.getFirstName() == null) || (user.getLastName() == null) ||
                 (user.getLogin().equals(emptyStr)) || (user.getFirstName().equals(emptyStr)) ||
-                (user.getLastName().equals(emptyStr))) {
+                (user.getPassword().equals(emptyStr)) || (user.getLastName().equals(emptyStr))) {
             
-            req.setAttribute("errorMessage", "Login, first/last name is required.");
+            req.setAttribute("errorMessage", "Login, password, first/last name is required.");
             req.setAttribute("user", user);
             return true;
         }
@@ -45,12 +50,12 @@ public class UserUtils {
     }
     
     // Check user fields and send error to request attr
-    public static void setStatementVlueByType(PreparedStatement statement, int index, Object primitiveType) throws SQLException {
+    public static void setStatementValueByType(PreparedStatement statement, int index, Object primitiveType) throws SQLException {
         // Types types = Types.getType(primitiveType.getClass().getDeclaredField("value").getType());
         if (primitiveType instanceof String) {
             statement.setString(index, (String) primitiveType);
         } else if (primitiveType instanceof Long){
-            statement.setLong(index, (Long) primitiveType);
+            statement.setLong(index, (long) primitiveType);
         }
     }
 }

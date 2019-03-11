@@ -1,6 +1,6 @@
 package dao.executor;
 
-import utils.UserUtils;
+import util.UserUtil;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -17,7 +17,7 @@ public class Executor {
             if (query.getValue() != null) {
                 for (int i = 0; i < query.getValue().length; i++) {
                     // try {
-                        UserUtils.setStatementVlueByType(stmt, i + 1, query.getValue()[i]);
+                        UserUtil.setStatementValueByType(stmt, i + 1, query.getValue()[i]);
                     // } catch (Exception e) {
                     //     e.printStackTrace();
                     //     return resultsFunc.apply(null);

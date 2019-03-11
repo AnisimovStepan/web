@@ -47,6 +47,14 @@
       <version>42.2.5</version>
     </dependency>
 
+    <!--Hibernate ORM-->
+    <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
+    <dependency>
+      <groupId>org.hibernate</groupId>
+      <artifactId>hibernate-core</artifactId>
+      <version>5.4.1.Final</version>
+    </dependency>
+
     <!--Logs-->
     <!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core -->
     <dependency>
@@ -69,6 +77,5 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
-
 
 </project>

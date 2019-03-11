@@ -1,10 +1,12 @@
-package servlets;
+package servlet;
 
-import dao.UserDao;
+import dao.DaoException;
 import model.User;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import utils.UserUtils;
+import service.UserService;
+import service.UserServiceImpl;
+import util.UserUtil;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,13 +15,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.List;
 
-@WebServlet("/create-user")
+// Link's for tomcat solve cyrillic problems thank's Ed
+// https://www.baeldung.com/tomcat-utf-8
+// http://qaru.site/questions/19427/how-to-get-utf-8-working-in-java-webapps
+
+@WebServlet("/admin/create-user")
 public class CreateUserServlet extends HttpServlet {
     private static final long serialVersionUID = -974743633305019061L;
     
     private static final Logger log = LogManager.getLogger(CreateUserServlet.class.getName());
+    
+    private UserService userService = UserServiceImpl.getInstance();
     
     // Show user creation page.
     @Override
@@ -35,20 +42,23 @@ public class CreateUserServlet extends HttpServlet {
     // This method will be called.
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        User user = UserUtils.getUserInstanceByParams(req);
+        User user = UserUtil.getUserInstanceByParams(req);
         
         // Check input user data if is false
-        if (UserUtils.invalidUserFields(user, req)) {
+        if (UserUtil.invalidUserFields(user, req)) {
             // Forward to create user jsp
+            req.setAttribute("blockHeader", "Create User");
+            req.setAttribute("servletUrl", req.getRequestURI());
+    
             getServletContext().getRequestDispatcher("/WEB-INF/view/userView.jsp").forward(req, resp);
             return;
         }
         
         try {
-            UserDao.add(user);
+            userService.add(user);
             // Redirect if all is fine to root
-            resp.sendRedirect(req.getContextPath() + "/");
-        } catch (SQLException e) {
+            resp.sendRedirect(req.getContextPath() + "/admin");
+        } catch (DaoException e) {
             log.info(e.getMessage());
             e.printStackTrace();
             // If some db error

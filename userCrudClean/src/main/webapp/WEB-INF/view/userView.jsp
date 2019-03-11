@@ -7,6 +7,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
+    <meta http-equiv='Content-Type' content='text/html; charset=UTF-8' >
     <meta name="author" content="Anisimov" />
     <meta name="description" content="User CRUD" />
     <!--<meta http-equiv="X-UA-Compatible" main="IE=edge" />-->
@@ -14,10 +15,10 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="format-detection" content="telephone=no">
-    <link rel="icon" type="image/png" href="static/images/favico.png">
-    <link rel="apple-touch-icon-precomposed" href="static/images/favico.png">
+    <link rel="icon" type="image/png" href="${pageContext.request.contextPath}/static/images/favico.png">
+    <link rel="apple-touch-icon-precomposed" href="${pageContext.request.contextPath}/static/images/favico.png">
 
-    <link rel="stylesheet" href="static/css/app.css"/>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/app.css"/>
 
     <title>User CRUD</title>
 </head>
@@ -46,6 +47,19 @@
                     </div>
 
                     <div class="form__row">
+                        <input class="form-input" type="text" name="password" placeholder="Password" value="${user.password}" autocorrect="off" autocapitalize="none" draggable="false">
+                    </div>
+
+                    <div class="form__row">
+                        <label>
+                            <select class="form-select" name="role" value="${user.role}">
+                                <option <c:if test="${user.role == 'ADMIN'}">selected="selected"</c:if> value="ADMIN">Admin</option>
+                                <option <c:if test="${user.role == 'USER'}">selected="selected"</c:if> value="USER">User</option>
+                            </select>
+                        </label>
+                    </div>
+
+                    <div class="form__row">
                         <input class="form-input" type="text" name="first-name" placeholder="First name" value="${user.firstName}" autocorrect="off" autocapitalize="none" draggable="false">
                     </div>
 
@@ -65,16 +79,16 @@
 
                     <div class="form__row" style="justify-content: center">
                         <c:choose>
-                            <c:when test="${servletUrl == '/edit-user'}">
+                            <c:when test="${servletUrl == '/admin/edit-user'}">
                                 <input class="change-color-button" type="submit" value="Save" draggable="false" style="margin-right: 40px">
-                                <a class="change-color-button" href="${pageContext.request.contextPath}/delete-user?login=${user.login}" style="margin-right: 40px" draggable="false">Delete</a>
+                                <a class="change-color-button" href="${pageContext.request.contextPath}/admin/delete-user?login=${user.login}" style="margin-right: 40px" draggable="false">Delete</a>
                             </c:when>
                             <c:otherwise>
                                 <input class="change-color-button" type="submit" value="Apply" draggable="false" style="margin-right: 40px">
                             </c:otherwise>
                         </c:choose>
 
-                        <a class="change-color-button" href="${pageContext.request.contextPath}/" draggable="false">Cancel</a>
+                        <a class="change-color-button" href="${pageContext.request.contextPath}/admin" draggable="false">Cancel</a>
                     </div>
                 </form>
             </div>
