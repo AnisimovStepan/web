@@ -1,0 +1,55 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv='Content-Type' content='text/html; charset=UTF-8' >
+    <meta name="author" content="Anisimov" />
+    <meta name="description" content="User CRUD" />
+    <!--<meta http-equiv="X-UA-Compatible" main="IE=edge" />-->
+    <meta name="viewport" content="width=device-width,height = device-height, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="icon" type="image/png" th:href="@{/static/images/favico.png}">
+    <link rel="apple-touch-icon-precomposed" th:href="@{/static/images/favico.png}">
+
+    <link rel="stylesheet" th:href="@{/static/bootstrap/bootstrap.min.css}"/>
+
+    <title>User CRUD</title>
+</head>
+<body ondragstart="" ontouchstart="" onmouseover="">
+<noscript>
+    You need to enable JavaScript to run this app.
+</noscript>
+<!-- this is where our React app will render -->
+<div id="root">
+    <nav class="navbar navbar-expand navbar-dark bg-dark">
+        <a class="navbar-brand" th:href="@{/}" draggable="false">User CRUD</a>
+        <div class="collapse navbar-collapse" id="navigation">
+            <div class="mr-auto mt-2 mt-lg-0"></div>
+            <ul class="navbar-nav my-2 my-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/sign-out}" draggable="false">Sign out</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div style="display: -webkit-box; display: -ms-flexbox; display: flex;">
+        <div class="nav flex-column nav-pills" style="min-height: calc(100vh - 56px); width: 225px; padding-top: 1rem">
+            <div th:each="authority : ${session.welcomeUser.authorities}">
+                <a th:if="${#strings.equals(authority, 'ADMIN')}" class="nav-link" th:href="@{/admin}" style="border-radius: 0" draggable="false">Admin</a>
+                <a th:if="${#strings.equals(authority, 'USER')}" class="nav-link active" th:href="@{/user}" style="border-radius: 0" draggable="false">User</a>
+            </div>
+        </div>
+        <div class="container-fluid bg-light">
+            <div style="margin: 2rem">
+                <h1 style="margin-bottom: 1rem">User page</h1>
+                <div th:text="'Hello, ' + ${session.welcomeUser.username} + '!'"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<script th:src="@{/static/jquery/jquery-3.0.0.min.js}"></script>
+<script th:src="@{/static/bootstrap/bootstrap.min.js}"></script>
+</body>
+</html>
+
